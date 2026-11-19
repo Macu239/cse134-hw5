@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/grid-layout.css">
     <link rel="stylesheet" href="css/site.css">
     <script src="js/theme.js" defer></script>
+    <script src="js/fact-panel.js" defer></script>
   </head>
   <body>
     <a href="#main">Skip to main content</a>
@@ -42,6 +43,16 @@
     <main id="main">
       <h1>Experiments</h1>
       <p>A sandbox for trying out HTML elements that go beyond basic page structure.</p>
+      <section aria-labelledby="widget-heading">
+        <h2 id="widget-heading">Interactive Widget</h2>
+
+        <button type="button" id="compact-toggle" hidden>Hide Details</button>
+
+        <fact-panel></fact-panel>
+
+        <noscript><p>Enable JavaScript to load live data for this widget.</p></noscript>
+      </section>
+      
 
       <section aria-labelledby="template-heading">
         <h2 id="template-heading">Template</h2>
