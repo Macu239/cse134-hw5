@@ -20,6 +20,7 @@ class FactPanel extends HTMLElement {
    * @returns {Promise<void>}
    */
   async loadFact() {
+    const hadFocus = document.activeElement === this.button;
     this.statusEl.textContent = "Loading a fact...";
     this.button.disabled = true;
     try {
@@ -44,6 +45,8 @@ class FactPanel extends HTMLElement {
         "Could not load a fact. Check your connection and press Get a fact to try again.";
     } finally {
       this.button.disabled = false;
+      // Disabling a focused button drops focus; give it back to keyboard users.
+      if (hadFocus) this.button.focus();
     }
   }
 
