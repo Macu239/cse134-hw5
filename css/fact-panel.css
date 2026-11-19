@@ -1,0 +1,25 @@
+fact-panel {
+  display: block;
+  background-color: var(--panel-bg, #18181b);
+  color: var(--panel-text, #f4f4f5);
+  border: 1px solid var(--panel-border, #52525b);
+  padding: 8px;
+}
+
+fact-panel [role="status"] {
+  font-size: 0.9rem;
+  color: var(--panel-muted, #a1a1aa);
+  margin-bottom: 10px;
+}
+
+fact-panel button:hover:not(:disabled) {
+  background-color: var(--link, #fda4af);
+  color: var(--bg, #0d0d0f);
+}
+
+fact-panel button:disabled {
+  background-color: var(--accent, #be123c);
+  color: var(--on-accent, #ffffff);
+  opacity: 0.6;
+  cursor: wait;
+}

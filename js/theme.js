@@ -17,11 +17,10 @@ const toggle = document.querySelector("#theme-toggle");
  */
 function loadTheme() {
   try {
-    // getItem returns null when nothing is saved. Return the saved value or DEFAULT_THEME.
+
     const saved = localStorage.getItem(THEME_KEY);
     return saved || DEFAULT_THEME;
   } catch (error) {
-    // Storage is blocked. Warn and return DEFAULT_THEME.
     console.warn("Theme preference could not be accessed from local storage. Applying default.");
     return DEFAULT_THEME;
   }

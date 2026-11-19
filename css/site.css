@@ -35,6 +35,13 @@
   color-scheme: light;
 }
 
+fact-panel {
+  --panel-bg: var(--surface);
+  --panel-text: var(--text);
+  --panel-border: var(--border);
+  --panel-muted: var(--muted);
+}
+
 body {
   margin: 0;
   background-color: var(--bg);

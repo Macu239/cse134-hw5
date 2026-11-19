@@ -98,15 +98,48 @@ class FactPanel extends HTMLElement {
   }
 }
 
+const MODE_KEY = "hw5-fact-panel-mode";
+const DEFAULT_MODE = "expanded";
 customElements.define("fact-panel", FactPanel);
 const panel = document.querySelector("fact-panel");
 const compactToggle = document.querySelector("#compact-toggle");
+
 if (panel && compactToggle) {
+  applyMode(loadMode());
   compactToggle.hidden = false;
-  compactToggle.addEventListener("click", () => {
-    panel.toggleAttribute("compact");
-    compactToggle.textContent = panel.hasAttribute("compact")
-      ? "Show Details"
-      : "Hide Details";
-  });
+  compactToggle.addEventListener("click", toggleMode);
+}
+
+function loadMode() {
+  try {
+    const saved = localStorage.getItem(MODE_KEY);
+    return saved === "expanded" || saved === "compact" ? saved : DEFAULT_MODE;
+  } catch (error) {
+    console.warn(
+      "Panel mode preference could not be accessed from local storage. Applying default.",
+    );
+    return DEFAULT_MODE;
+  }
+}
+
+function saveMode(mode) {
+  try {
+    localStorage.setItem(MODE_KEY, mode);
+  } catch (error) {
+    console.warn("Local mode can't be saved.");
+  }
+}
+
+function applyMode(mode) {
+  panel.toggleAttribute("compact", mode === "compact");
+  compactToggle.textContent = panel.hasAttribute("compact")
+    ? "Show Source"
+    : "Hide Source";
+}
+
+function toggleMode() {
+  const next = panel.hasAttribute("compact") ? "expanded" : "compact";
+
+  applyMode(next);
+  saveMode(next);
 }
